@@ -9,6 +9,9 @@
     <title>Branch Details</title>
 </head>
 <body>
+    <div class="form-group">
+        <a href="{% url 'bankapiapp:allbranch' %}"> Search Bank Name and City</a>
+</div>
     <form  method="GET" action="{% url 'bankapiapp:branchdetail' %}"> {% csrf_token %}
         <div class="row">
           <div class="col-xs-6 col-md-4">
