@@ -81,16 +81,11 @@ WSGI_APPLICATION = 'BankApi.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'indian_banks',
-        'USER': 'postgres',
-        'PASSWORD': 'admin',
-        'HOST': 'localhost',
-        'PORT': '5433',
-    }
-}
+DATABASES = {   }
+
+import dj_database_url
+db_from_env = dj_database_url.config()
+DATABASES['default'] =db_from_env
 
 
 # Password validation
