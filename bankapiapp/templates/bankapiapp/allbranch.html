@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        {% load rest_framework %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <title>Branch Details</title>
+</head>
+<body>
+    <form  method="GET" action="{% url 'bankapiapp:allbranch' %}"> {% csrf_token %}
+
+            <div class="form-group">
+                    <label for="usr">Bank Name:</label>
+                    <input type="text" class="form-control"  name="txtbank" value="{{ request.GET.txtbank }}">
+            </div>
+            <div class="form-group">
+                    <label for="pwd">City:</label>
+                    <input type="text" class="form-control" name="txtcity" value="{{ request.GET.txtcity }}">
+            </div>
+
+        
+            <div class="form-group">
+                    <button class="btn btn-success btn-block" type="submit">
+                    <span class="glyphicon glyphicon-search"> </span>
+                    </button>
+            </div>
+        </div>
+      </form>
+
+      {% if data  %}
+      <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>ifsc</th> <th>bank_name</th> <th>branch</th> <th>address</th> <th>city</th><th>district</th><th>state</th>
+            </tr>
+        </thead>
+        {% for d in data %}
+            <tr>
+                <td> {{d.ifsc}} </td>
+                <td> {{d.bank_name | upper}} </td>
+                <td> {{d.branch | upper}} </td>
+                <td> {{d.address | upper}} </td>
+                <td> {{d.city | upper}} </td>
+                <td> {{d.district | upper}} </td>
+                <td> {{d.state | upper}} </td>
+            </tr>
+        {% endfor %}
+    </table>
+      {% endif %}
+
+</body>
+</html>

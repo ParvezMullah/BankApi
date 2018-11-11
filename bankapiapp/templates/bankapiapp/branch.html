@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        {% load rest_framework %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <title>Branch Details</title>
+</head>
+<body>
+    <form  method="GET" action="{% url 'bankapiapp:branchdetail' %}"> {% csrf_token %}
+        <div class="row">
+          <div class="col-xs-6 col-md-4">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Enter IFSC code"  name="txtSearch" id="txtSearch" value="{{ request.GET.txtSearch }}"/>
+              <div class="input-group-btn">
+                <button class="btn btn-primary" type="submit">
+                  <span class="glyphicon glyphicon-search"> </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      {% if data  %}
+      <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>ifsc</th> <th>bank_name</th> <th>branch</th> <th>address</th> <th>city</th><th>district</th><th>state</th>
+            </tr>
+        </thead>
+            <tr>
+                <td> {{data.0.ifsc}} </td>
+                <td> {{data.0.bank_name | upper}} </td>
+                <td> {{data.0.branch | upper}} </td>
+                <td> {{data.0.address | upper}} </td>
+                <td> {{data.0.city | upper}} </td>
+                <td> {{data.0.district | upper}} </td>
+                <td> {{data.0.state | upper}} </td>
+            </tr>
+    </table>
+      {% endif %}
+</body>
+</html>
