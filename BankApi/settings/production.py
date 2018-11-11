@@ -25,7 +25,7 @@ SECRET_KEY = 'nelq9p=k@!n(fsn7js=ju0kcd&)fakos#j2k2v)v5#yq$oli0%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['fyleassignment.herokuapp.com']
 
 
 # Application definition
@@ -89,14 +89,7 @@ WSGI_APPLICATION = 'BankApi.wsgi.application'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'indian_banks',
-        'USER': 'postgres',
-        'PASSWORD': 'admin',
-        'HOST': 'localhost',
-        'PORT': '5433',
-    }
+    
 }
 
 import dj_database_url
